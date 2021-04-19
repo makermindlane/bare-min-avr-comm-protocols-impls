@@ -3,7 +3,6 @@
 #include <avr/interrupt.h>
 #include <math.h>
 
-/* Don't forget to enable global interrupt in your main() function, i.e., sei() call */
 
 void uartInit(uint32_t baudRate) {
 	/* Converting the baud rate to a value for USART baud rate register (UBRR0).
@@ -47,7 +46,9 @@ uint8_t uartReceiveChar() {
 
 
 extern void onReceiveIntt();
-
+/*
+	NOTE: Generally it's not recommended to call a function from inside an ISR.
+*/
 ISR(USART_RX_vect) {
 	onReceiveIntt();
 }

@@ -20,8 +20,11 @@ int main(void) {
 	}
 }
 
-
+/* 
+	This function will be called by ISR whenever USART receive interrupt occurs
+*/
 void onReceiveIntt() {
+	// Receive data from USART data register
 	inChar = UDR0;
 	sendEnable = 1;
 }
